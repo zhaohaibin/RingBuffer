@@ -80,7 +80,10 @@ public:
 		return doGetLengthForRead();
 	}
 
-	//写入数据
+	//向缓冲区中写入数据
+	//char* pData 执行的数据将会被写入环形缓冲区中
+	//int64_t length 要写入的数据的长度
+	//成功返回写入的长度，失败返回0
 	int64_t write(char* pData, int64_t length)
 	{
 		Locker locker(m_mutex);
@@ -118,7 +121,11 @@ public:
 		return 0;
 	}
 
-	//读取数据
+	//从环形缓冲区中读出指定长度的数据到pData指向的缓冲区中
+	//数据被读出后，该段缓冲区变为可写
+	//char* pData 指向用于存储从环形缓冲区读出的数据
+	//int64_t length pData指向的缓冲区大小
+	//返回实际读出的数据大小
 	int64_t read(char* pData, int64_t length)
 	{
 		Locker locker(m_mutex);
