@@ -23,7 +23,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\RingBuffer.h">
+    <ClInclude Include="src\RingBuffer.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
